@@ -47,4 +47,21 @@ public class Login_step_defs extends LoginSteps{
         confirmNotLogin();
     }
 
+    @And("User enter invalid email")
+    public void userEnterInvalidEmail() {
+        String invalidPassword = ConfigurationReader.get("invalidE");
+        enterEmail(invalidPassword);
+    }
+
+    @And("User enter missing password")
+    public void userEnterMissingPassword() {
+        String missingPassword = ConfigurationReader.get("missingP");
+        enterPassword(missingPassword);
+        acceptAndJoinButton.click();
+    }
+
+    @Then("User should see the warning about missing password")
+    public void userShouldSeeTheWarningAboutMissingPassword() {
+        missingPasswordWarning();
+    }
 }
