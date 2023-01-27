@@ -24,7 +24,18 @@ public class HomePageSteps {
         for (WebElement ele : actualElements) {
             elements.add(ele.getAttribute("title"));
         }
-
         return elements;
     }
+
+    public void clickOnElement(String element) {
+        Driver.get().findElement(By.xpath("//span[@title='"+element+"']")).click();
+        String currentUrl = Driver.get().getCurrentUrl();
+        if (element.equals("Home")) {
+            Assert.assertTrue(currentUrl.contains("feed"));
+        }else {
+            Assert.assertTrue(currentUrl.contains(element.toLowerCase().replace(" ","")));
+        }
+
+    }
+
 }
