@@ -23,3 +23,17 @@ Feature: HomePage
       | Jobs         |
       | Messaging    |
       | Notification |
+
+  Scenario Outline: Verify if the main elements are working as expected
+    Given User navigate to login page
+    When User enter valid email
+    And User enter valid password
+    Then User should click every main "<elements>" and check "<urlPart>" on Home Page
+    Examples:
+      | elements     | urlPart       |
+      | Home         | feed          |
+      | My Network   | mynetwork     |
+      | Jobs         | jobs          |
+      | Messaging    | messaging     |
+      | Notification | notifications |
+
